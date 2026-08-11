@@ -631,3 +631,87 @@ textarea.form-control {
     font-size: 13px;
     color: var(--text-main);
 }
+
+/* --- Mobile Responsiveness Media Queries --- */
+
+@media (max-width: 900px) {
+    /* Make Kanban columns scrollable horizontally like real Jira */
+    .board-container {
+        display: flex;
+        overflow-x: auto;
+        gap: 16px;
+        padding-bottom: 16px;
+        align-items: flex-start;
+    }
+    .board-column {
+        flex: 0 0 285px;
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    /* Transform Sidebar into an offscreen Drawer */
+    aside {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        bottom: 0;
+        width: 260px;
+        height: 100vh;
+        transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    aside.active {
+        left: 0;
+    }
+
+    /* Display Hamburguer Sidebar Toggle */
+    #btn-toggle-sidebar {
+        display: block !important;
+    }
+
+    main {
+        padding: 20px;
+        height: calc(100vh - 60px);
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .header-actions {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 10px;
+        justify-content: space-between;
+    }
+
+    .header-actions input {
+        flex-grow: 1;
+        width: auto !important;
+    }
+
+    /* Modals should expand on mobile */
+    .modal-container {
+        width: 95%;
+        padding: 16px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* Auth Card responsiveness */
+    .auth-container {
+        width: 90%;
+        padding: 24px;
+        margin: 0 auto;
+    }
+}
+
